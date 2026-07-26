@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c5a60v7n4v0fd"]
+
+[ext_resource type="Script" uid="uid://6np8umjprylc" path="res://scene/game_object/game_camera/game_camera.gd" id="1_lipme"]
+
+[node name="GameCamera" type="Camera2D" unique_id=2123184366]
+limit_left = -160
+limit_top = -96
+limit_right = 1048
+limit_bottom = 880
+position_smoothing_speed = 20.0
+script = ExtResource("1_lipme")

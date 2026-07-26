@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://w7bvdb4u4kya"]
+
+[ext_resource type="Script" uid="uid://do6ocx3u4y7lm" path="res://scene/component/velocity_component.gd" id="1_fqkag"]
+
+[node name="VelocityComponent" type="Node" unique_id=1289438935]
+script = ExtResource("1_fqkag")
+max_speed = 40
+acceleration = 5.0

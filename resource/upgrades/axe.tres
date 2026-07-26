@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://bprq8l3ra5y6s"]
+
+[ext_resource type="PackedScene" uid="uid://cpmbnlxs7ij07" path="res://scene/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_kf5ic"]
+[ext_resource type="Script" uid="uid://ec3r3ex4re2v" path="res://resource/upgrades/ability.gd" id="1_mybub"]
+
+[resource]
+script = ExtResource("1_mybub")
+ability_controller_scene = ExtResource("1_kf5ic")
+id = "axe"
+max_quantity = 8
+name = "Axe"
+description = "Get an axe spinning around"

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bim18wtm0a0mj"]
+
+[ext_resource type="Texture2D" uid="uid://dgwrknfbpjlci" path="res://assets/player/player.png" id="1_kelma"]
+[ext_resource type="Script" uid="uid://dg04mom2or0fj" path="res://scene/game_object/player/player.gd" id="1_y8w33"]
+[ext_resource type="PackedScene" uid="uid://c5wi8kbo0xg4m" path="res://scene/component/health_component.tscn" id="2_a2is6"]
+[ext_resource type="PackedScene" uid="uid://befyopmyjs4j4" path="res://scene/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_wfpis"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2is6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwvie"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ks1o2"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a2is6"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8w33"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1379522925 groups=["player"]]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_y8w33")
+
+[node name="HealthComponent" parent="." unique_id=2018649584 instance=ExtResource("2_a2is6")]
+max_health = 1000.0
+
+[node name="Abilities" type="Node" parent="." unique_id=273112335]
+
+[node name="SwordAbilityController" parent="Abilities" unique_id=628815562 instance=ExtResource("2_wfpis")]
+
+[node name="DamageIntervalTimer" type="Timer" parent="." unique_id=834816555]
+wait_time = 2.0
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1477336286]
+clip_contents = true
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 16.0
+offset_bottom = -9.0
+pivot_offset = Vector2(16, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_a2is6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rwvie")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="PickUpArea" type="Area2D" parent="." unique_id=1405086538]
+visible = false
+collision_layer = 16
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea" unique_id=1855362891]
+shape = SubResource("CircleShape2D_ks1o2")
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1242595494]
+texture = ExtResource("1_kelma")
+metadata/_edit_lock_ = true
+
+[node name="CollisionArea" type="Area2D" parent="." unique_id=1504294055]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=2113306938]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_a2is6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1493987991]
+visible = false
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_y8w33")
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="DamageIntervalTimer" to="." method="_on_damage_interval_timer_timeout"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="body_exited" from="CollisionArea" to="." method="_on_collision_area_body_exited"]

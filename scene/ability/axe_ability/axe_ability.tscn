@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bnowkgmiwxkbr"]
+
+[ext_resource type="Script" uid="uid://csrdoej4yjdoq" path="res://scene/ability/axe_ability/axe_ability.gd" id="1_84syg"]
+[ext_resource type="Texture2D" uid="uid://cbxvf0280tk5n" path="res://scene/ability/axe_ability/axe.png" id="1_fuemh"]
+[ext_resource type="PackedScene" uid="uid://d2upp3rh7v751" path="res://scene/component/hit_box_component.tscn" id="3_cxb2r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxb2r"]
+
+[node name="AxeAbility" type="Node2D" unique_id=336432350]
+script = ExtResource("1_84syg")
+
+[node name="Axe" type="Sprite2D" parent="." unique_id=382881386]
+texture = ExtResource("1_fuemh")
+
+[node name="HitBoxComponent" parent="." unique_id=2110616405 instance=ExtResource("3_cxb2r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" unique_id=607163661]
+shape = SubResource("CircleShape2D_cxb2r")

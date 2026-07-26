@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c5wi8kbo0xg4m"]
+
+[ext_resource type="Script" uid="uid://7xvwppkmvqig" path="res://scene/component/health_component.gd" id="1_botde"]
+[ext_resource type="PackedScene" uid="uid://di5jphvqu5r0n" path="res://scene/ui/floating_text.tscn" id="2_7rhfy"]
+
+[node name="HealthComponent" type="Node" unique_id=2018649584]
+script = ExtResource("1_botde")
+floating_text_scene = ExtResource("2_7rhfy")

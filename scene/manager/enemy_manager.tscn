@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://sfjb2g3h7q85"]
+
+[ext_resource type="Script" uid="uid://dnsbj2duvh7i6" path="res://scene/manager/enemy_manager.gd" id="1_q4sfe"]
+[ext_resource type="PackedScene" uid="uid://cxlxr0ka685r" path="res://scene/game_object/wizard_enemy/wizard_enemy.tscn" id="2_lenjj"]
+[ext_resource type="PackedScene" uid="uid://s5r146fpw8c0" path="res://scene/game_object/basic_enemy/basic_enemy.tscn" id="2_spjen"]
+
+[node name="EnemyManager" type="Node" unique_id=318565414]
+script = ExtResource("1_q4sfe")
+basic_enemy_scene = ExtResource("2_spjen")
+wizard_enemy_scene = ExtResource("2_lenjj")
+
+[node name="Timer" type="Timer" parent="." unique_id=1876161866]
+unique_name_in_owner = true
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
